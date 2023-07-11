@@ -1,17 +1,17 @@
 package com.example.mvpejerccio6;
 
-public class Modelo {
-    public static final int DEBIL = 0;
-    public static final int MEDIA = 1;
-    public static final int FUERTE = 2;
+public class Model {
+    public static final int WEAK = 0;
+    public static final int MEDIUM = 1;
+    public static final int STRONG = 2;
 
     public int checkingPasswords(String passwords) {
         if (passwords.length() < 5) {
-            return DEBIL;
+            return WEAK;
         } else if (passwords.equals(passwords.toLowerCase())) {
-            return MEDIA;
+            return MEDIUM;
         } else {
-            return FUERTE;
+            return STRONG;
         }
 
     }

@@ -10,15 +10,16 @@ import android.widget.Toast;
 import com.example.mvpejerccio6.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements ViewPresentador {
-    private Presentador presentador;
+    private Presenter presentador;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate((getLayoutInflater()));
+        binding = ActivityMainBinding.inflate((getLayoutInflater()));
         setContentView(binding.getRoot());
 
-        presentador = new Presentador(this);
+        presentador = new Presenter(this);
         binding.editPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ViewPresentador {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-presentador.evaluarContraseña(s.toString());
+                presentador.evaluarContraseña(s.toString());
             }
 
             @Override
@@ -36,26 +37,36 @@ presentador.evaluarContraseña(s.toString());
             }
         });
 
+        binding.confirmB.setOnClickListener(v->pl
+        {
+            String msn = "Su contraseña es "+binding.levelTxt.getText()+".";
+
+            Toast.makeText(this, msn, Toast.LENGTH_SHORT).show();
+        });
+
     }
 
     @Override
     public void showDebil() {
-        Toast.makeText(this, "Contraseña Débil", Toast.LENGTH_SHORT).show();
+        binding.levelTxt.setText("Debil");
+        binding.levelTxt.setBackgroundResource(R.color.red);
     }
 
     @Override
     public void showMedia() {
-        Toast.makeText(this, "Media", Toast.LENGTH_SHORT).show();
+        binding.levelTxt.setText("Mediana");
+        binding.levelTxt.setBackgroundResource(R.color.yellor);
     }
 
     @Override
     public void showFuerte() {
-        Toast.makeText(this, "Fuerte", Toast.LENGTH_SHORT).show();
+        binding.levelTxt.setText("Fuerte");
+        binding.levelTxt.setBackgroundResource(R.color.green);
     }
 
     @Override
     public void showError() {
 
-            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
     }
 }

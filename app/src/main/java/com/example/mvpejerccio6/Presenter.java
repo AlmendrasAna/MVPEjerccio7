@@ -1,14 +1,14 @@
 package com.example.mvpejerccio6;
 
-public class Presentador {
+public class Presenter {
 
-    private Modelo modelo;
+    private Model modelo;
     private ViewPresentador viewPresentador;
 
-    public Presentador(ViewPresentador viewPresentador) {
+    public Presenter(ViewPresentador viewPresentador) {
 
         this.viewPresentador = viewPresentador;
-        modelo = new Modelo();
+        modelo = new Model();
     }
 
 
@@ -16,14 +16,14 @@ public class Presentador {
         int nivel = modelo.checkingPasswords(password);
 
 
-        if (nivel == modelo.DEBIL) {
+        if (nivel == modelo.WEAK) {
             this.viewPresentador.showDebil();
 
-        } else if (nivel == modelo.MEDIA) {
+        } else if (nivel == modelo.MEDIUM) {
             this.viewPresentador.showMedia();
 
 
-        } else if (nivel == modelo.FUERTE) {
+        } else if (nivel == modelo.STRONG) {
             this.viewPresentador.showFuerte();
 
         }else{
