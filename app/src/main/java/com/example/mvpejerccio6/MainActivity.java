@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ViewPresentador {
             }
         });
 
-        binding.confirmB.setOnClickListener(v->pl
+        binding.confirmB.setOnClickListener(v->
         {
             String msn = "Su contraseña es "+binding.levelTxt.getText()+".";
 
